@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
+  root to: "stations#home"
 
   namespace :api, defaults: { format: :json } do
-    resources :stations, only: [ :show ]
+    resources :stations, only: [ :index ]
   end
 end

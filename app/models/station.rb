@@ -1,4 +1,5 @@
 class Station < ApplicationRecord
   acts_as_mappable
-  # add validation here too.
+
+  validates :name, :station_id, :lat, :lng, :availability, presence: true
 end

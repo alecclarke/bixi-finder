@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2018_09_29_193241) do
   enable_extension "plpgsql"
 
   create_table "stations", force: :cascade do |t|
-    t.integer "station_id"
-    t.decimal "lat", precision: 10, scale: 5
-    t.decimal "lng", precision: 10, scale: 5
-    t.string "name"
-    t.integer "availability", limit: 2
+    t.integer "station_id", null: false
+    t.decimal "lat", precision: 8, scale: 5, null: false
+    t.decimal "lng", precision: 8, scale: 5, null: false
+    t.string "name", null: false
+    t.integer "availability", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lat", "lng"], name: "index_stations_on_lat_and_lng"

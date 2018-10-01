@@ -21,25 +21,25 @@ RSpec.describe FindClosestAvailableStations do
       Station.delete_all
     end
 
-    context "when a limit is provided" do
-      it "returns the 4 closest stations with an available bike" do
+    context "when a limit isn't provided" do
+      it "returns the closest station with an available bike" do
+        stations = described_class.new(lat: 40, lng: 40).call
+        expect(stations.length).to eq(1)
+        expect(stations).to include(station4)
+      end
+    end
+
+    context "when a limit n is provided" do
+      it "returns the n closest stations with an available bike" do
         stations = described_class.new(lat: 40, lng: 40, limit: 4).call
         expect(stations.length).to eq(4)
         expect(stations).to include(station1, station2, station3, station4)
       end
     end
 
-    context "when a limit isn't provided" do
-      it "returns the 3 closest stations with an available bike" do
-        stations = described_class.new(lat: 40, lng: 40).call
-        expect(stations.length).to eq(3)
-        expect(stations).to include(station2, station3, station4)
-      end
-    end
-
     context "when a ip is provided" do
       it "returns the closest station to the geolocated ip origin" do
-        stations = described_class.new(ip: "12.215.42.19", limit: 1).call
+        stations = described_class.new(ip: "12.215.42.19").call
         expect(stations.length).to eq(1)
         expect(stations).to include(station1)
       end
@@ -47,7 +47,7 @@ RSpec.describe FindClosestAvailableStations do
 
     context "when lat and lng are provided" do
       it "returns the closest station to the givin lat/lng origin" do
-        stations = described_class.new(lat: 10, lng: 10, limit: 1).call
+        stations = described_class.new(lat: 10, lng: 10).call
         expect(stations.length).to eq(1)
         expect(stations).to include(station2)      
       end

@@ -1,7 +1,7 @@
 class FindClosestAvailableStations
   class MissingOriginError < StandardError; end
  
-  def initialize(ip: nil, lat: nil, lng: nil, limit: 3)
+  def initialize(ip: nil, lat: nil, lng: nil, limit: 1)
     @ip = ip
     @lat = lat
     @lng = lng

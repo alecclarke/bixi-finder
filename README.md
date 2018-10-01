@@ -30,3 +30,6 @@ Things you may want to cover:
 4. Explain tests
 5. baked in availability check to the api
 6. steps for running
+7. Fix webpack web volumes issue
+8. set up IP location
+9. Comment fe code (using maps, refactors, tests, ...)
